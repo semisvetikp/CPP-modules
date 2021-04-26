@@ -6,7 +6,7 @@
 /*   By: jradioac <jradioac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:30:21 by jradioac          #+#    #+#             */
-/*   Updated: 2021/04/25 03:32:18 by jradioac         ###   ########.fr       */
+/*   Updated: 2021/04/27 02:41:05 by jradioac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,84 @@
 #include "phonebook.hpp"
 
 
-void print_contacts(Phonebook &book)
+int only_digit(std:: string line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (std::isdigit(line[i]) == 0) 
+			return(1);
+		i++;
+	}
+	return (0);
+}
+
+
+int getValue()
+{
+	while (true)
+	{
+		std :: string line;
+		std :: cin >> line;
+		if ((only_digit(line) == 1))
+			std :: cout << "Oops, that input is invalid.  Please try again.\n";
+		else 
+			return(std::stoi(line));
+	}
+}
+
+void Phonebook::print_contacts()
 {
 	int k;
 
 	k = 0;
-	while (k < book.i + 1)
+	while (k < i + 1)
 	{
-		std :: cout << "№:  " << book.contacts[k].m_id << " |   ";
-		std :: cout << "First name: " << book.contacts[k].m_first_name << "   |   ";
-		std :: cout << "Last name: "<< book.contacts[k].m_last_name << "\n";
+		std :: cout << "№:  " << contacts[k].getid() << " |   ";
+		std :: cout << "First name: " << contacts[k].getfname() << "   |   ";
+		std :: cout << "Last name: "<< contacts[k].getlname() << "   |   ";
+		std :: cout << "Nickname: "<< contacts[k].getnname() << "\n";
 		k++;
 	}
 	std :: cout << "\n";
 	return ;
 }
 
-
-void rewrite_contact(Phonebook &book, int number)
+std::string read(std::string line)
 {
-	std :: cout << "Please enter your first name\n";
-	std :: cin >> book.contacts[number].m_first_name;
-	std :: cout << "Please enter your last name\n";
-	std :: cin >> book.contacts[number].m_last_name;
-	std :: cout << "Please enter your email address\n";
-	std :: cin >> book.contacts[number].m_email;
+	std::string str;
+
+	std :: cout << "Please enter your " << line << ":\n";
+	std :: cin >> str;
+	return (str);
+
+}
+
+void Phonebook::rewrite_contact(int number)
+{
+	contacts[number].setfname(read("first name"));
+	contacts[number].setlname(read("last name"));
+	contacts[number].setnname(read("nickname"));
+	contacts[number].setlogin(read("login"));
+	contacts[number].setpost(read("postal address"));
+	contacts[number].setemail(read("email"));
 	std :: cout << "Please enter your number\n";
-	std :: cin >> book.contacts[book.i].m_number;
+	contacts[number].setnumber(getValue());
 	std :: cout << "Please enter the day of your birth\n";
-	std :: cin >> book.contacts[number].m_dayb;
+	contacts[number].setdayb(getValue());
 	std :: cout << "Please enter the month of your birth\n";
-	std :: cin >> book.contacts[number].m_monthb;
+	contacts[number].setmonthb(getValue());
 	std :: cout << "Please enter the year of your birth\n";
-	std :: cin >> book.contacts[number].m_yearb;
-	std :: cout << "Contact created\n";
+	contacts[number].setyearb(getValue());
+	contacts[number].setmeal(read("favorite meal"));
+	contacts[number].setcolor(read("underwear color"));
+	contacts[number].setsecret(read("darkest secret"));	
 	return ;
 }
 
-void delete_rewrite(Phonebook &book)
+void Phonebook::delete_rewrite()
 {
 	std :: string answer;
 	int number;
@@ -62,61 +102,47 @@ void delete_rewrite(Phonebook &book)
 		return ;
 	else if (answer == "y")
 	{
-		print_contacts(book);
+		print_contacts();
 		std :: cout <<	"Please enter number of contacts\n";
 		std :: cin >> number;
-		rewrite_contact(book, number - 1);
+		rewrite_contact(number - 1);
 		return ;
 	}
 	else
 	{
 		std :: cout <<	"Try again\n";
-		delete_rewrite(book);
+		delete_rewrite();
 	}
 }
 
-void handling_contact(Phonebook &book)
+void Phonebook::handling_contact()
 {
-	book.i++;
-	if (book.i > book.size - 1)
-		delete_rewrite(book);
+	i++;
+	if (i > size - 1)
+		delete_rewrite();
 	else
 	{
-		book.contacts[book.i].m_id = book.i;
-		std :: cout << "Please enter your first name\n";
-		std :: cin >> book.contacts[book.i].m_first_name;
-		std :: cout << "Please enter your last name\n";
-		std :: cin >> book.contacts[book.i].m_last_name;
-		std :: cout << "Please enter your number\n";
-		std :: cin >> book.contacts[book.i].m_number;
-		std :: cout << "Please enter your email address\n";
-		std :: cin >> book.contacts[book.i].m_email;
-		std :: cout << "Please enter the day of your birth\n";
-		std :: cin >> book.contacts[book.i].m_dayb;
-		std :: cout << "Please enter the month of your birth\n";
-		std :: cin >> book.contacts[book.i].m_monthb;
-		std :: cout << "Please enter the year of your birth\n";
-		std :: cin >> book.contacts[book.i].m_yearb;
+		contacts[i].setid(i);
+		rewrite_contact(i);
 		std :: cout << "Contact created\n";
 	}
 	return ;
-	// std :: cout << name.m_last_name << '\n';
 }
 
 
-void search_contact(Phonebook &book)
+void Phonebook::search_contact()
 {
 	int number;
-	print_contacts(book);
+	
+	print_contacts();
 	std :: cout << "Please select a contact number to show full information\n";
 	std :: cin >> number;
-	if (number >= 0 && number <= book.i)
-		print_contactdata(book, number);
+	if (number >= 0 && number <= i)
+		contacts[number].print_contactdata();
 	else
 	{
 		std :: cout << "Please try again\n";
-		search_contact(book);
+		search_contact();
 	}
 	return ;
 }
-
