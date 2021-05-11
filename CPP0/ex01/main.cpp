@@ -6,7 +6,7 @@
 /*   By: jradioac <jradioac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 01:56:40 by jradioac          #+#    #+#             */
-/*   Updated: 2021/04/27 02:45:53 by jradioac         ###   ########.fr       */
+/*   Updated: 2021/04/28 00:04:13 by jradioac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,22 @@ void print_instruction()
 int main(void)
 {
 	Phonebook book;
-	// Contact name;
 	std :: string s1;
 
 	print_instruction();
-	while(1)
+	while(!std::cin.eof())
 	{
 		std :: cout << "Enter ADD, SEARCH or EXIT\n";
-		std :: cin >> s1;
+		getline(std::cin, s1);
 		if  (s1 == "ADD")
 			book.handling_contact();
 		else if (s1 == "SEARCH")
 			book.search_contact();
 		else if ((s1 == "EXIT"))
 		{
-			std :: cout << "Bye-bye\n";
+			std :: cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+			std :: cout << std::right << std::setfill(' ') << std::setw(23) << "*Bye-Bye*\n";
+			std :: cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 			exit(1);
 		}
 		else 

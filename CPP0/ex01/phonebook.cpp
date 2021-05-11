@@ -6,7 +6,7 @@
 /*   By: jradioac <jradioac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:30:21 by jradioac          #+#    #+#             */
-/*   Updated: 2021/04/27 02:41:05 by jradioac         ###   ########.fr       */
+/*   Updated: 2021/04/28 00:45:53 by jradioac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int only_digit(std:: string line)
 	int i;
 
 	i = 0;
+	if (line.empty() || !line.size())
+		return(1);
 	while (line[i] != '\0')
 	{
 		if (std::isdigit(line[i]) == 0) 
@@ -34,43 +36,36 @@ int getValue()
 	while (true)
 	{
 		std :: string line;
-		std :: cin >> line;
-		if ((only_digit(line) == 1))
-			std :: cout << "Oops, that input is invalid.  Please try again.\n";
-		else 
+		getline(std::cin, line);
+		if (line.empty() || !line.size())
+			return(0);
+		else if ((only_digit(line) == 0))
 			return(std::stoi(line));
+		else if (std::cin.eof())
+			exit(1);
+		else 
+			std :: cout << "Oops, that input is invalid.  Please try again.\n";
 	}
-}
-
-void Phonebook::print_contacts()
-{
-	int k;
-
-	k = 0;
-	while (k < i + 1)
-	{
-		std :: cout << "№:  " << contacts[k].getid() << " |   ";
-		std :: cout << "First name: " << contacts[k].getfname() << "   |   ";
-		std :: cout << "Last name: "<< contacts[k].getlname() << "   |   ";
-		std :: cout << "Nickname: "<< contacts[k].getnname() << "\n";
-		k++;
-	}
-	std :: cout << "\n";
-	return ;
 }
 
 std::string read(std::string line)
 {
 	std::string str;
 
-	std :: cout << "Please enter your " << line << ":\n";
-	std :: cin >> str;
+	std :: cout << "Please enter your " << line << std :: endl;
+	getline(std::cin, str);
 	return (str);
 
 }
 
 void Phonebook::rewrite_contact(int number)
 {
+	if (number > size - 1 || number < 0)
+	{
+		std :: cout << "Oops, some wrong\n";
+		return;
+	}
+	std :: cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	contacts[number].setfname(read("first name"));
 	contacts[number].setlname(read("last name"));
 	contacts[number].setnname(read("nickname"));
@@ -88,24 +83,24 @@ void Phonebook::rewrite_contact(int number)
 	contacts[number].setmeal(read("favorite meal"));
 	contacts[number].setcolor(read("underwear color"));
 	contacts[number].setsecret(read("darkest secret"));	
+	std :: cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	return ;
 }
 
 void Phonebook::delete_rewrite()
 {
 	std :: string answer;
-	int number;
+	std :: string number;
 
 	std :: cout <<	"The contact book is full. Do you want to overwrite one of existing contacts? (y/n) \n";
-	std :: cin >> answer;
+	getline(std::cin, answer);
 	if (answer == "n")
 		return ;
 	else if (answer == "y")
 	{
 		print_contacts();
-		std :: cout <<	"Please enter number of contacts\n";
-		std :: cin >> number;
-		rewrite_contact(number - 1);
+		std :: cout <<	"Please enter number of contacts (0-7)\n";
+		rewrite_contact(getValue());
 		return ;
 	}
 	else
@@ -117,14 +112,15 @@ void Phonebook::delete_rewrite()
 
 void Phonebook::handling_contact()
 {
-	i++;
-	if (i > size - 1)
+	if (i >= size - 1)
 		delete_rewrite();
 	else
 	{
+		i++;
 		contacts[i].setid(i);
 		rewrite_contact(i);
 		std :: cout << "Contact created\n";
+		std :: cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	}
 	return ;
 }
@@ -132,17 +128,19 @@ void Phonebook::handling_contact()
 
 void Phonebook::search_contact()
 {
-	int number;
+	std::string number;
+	int num;
 	
 	print_contacts();
-	std :: cout << "Please select a contact number to show full information\n";
-	std :: cin >> number;
-	if (number >= 0 && number <= i)
-		contacts[number].print_contactdata();
-	else
+	std :: cout << "Please select a contact number to show full information or any character for return to menu\n";
+	getline(std::cin, number);
+	if (!(only_digit(number)))
 	{
-		std :: cout << "Please try again\n";
-		search_contact();
+		num = std::stoi(number);
+		if (num >= 0 && num <= i)
+			contacts[num].print_contactdata();
 	}
+	else
+		return;
 	return ;
 }

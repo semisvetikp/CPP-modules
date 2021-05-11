@@ -6,7 +6,7 @@
 /*   By: jradioac <jradioac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 20:02:27 by jradioac          #+#    #+#             */
-/*   Updated: 2021/04/27 01:28:38 by jradioac         ###   ########.fr       */
+/*   Updated: 2021/04/28 00:28:39 by jradioac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 class Phonebook
 {
+private:	
 	static const int size = 8;
 	int i;
 	Contact contacts[size];

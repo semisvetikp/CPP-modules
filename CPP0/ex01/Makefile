@@ -1,3 +1,5 @@
+HEADER_C = contact.hpp
+HEADER_P = phonebook.hpp
 SRCS	=  phonebook.cpp contact.cpp main.cpp
 
 CXX		= clang++
@@ -9,8 +11,8 @@ NAME = phonebook
 
 RM   =  rm -f
 
-.cpp.o:
-	$(CXX) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
+%.o: %.cpp $(HEADER_C) $(HEADER_P)
+	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 all: $(NAME)
 

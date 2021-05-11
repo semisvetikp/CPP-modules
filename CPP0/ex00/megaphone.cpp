@@ -6,19 +6,11 @@
 /*   By: jradioac <jradioac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 00:27:07 by jradioac          #+#    #+#             */
-/*   Updated: 2021/04/23 01:46:49 by jradioac         ###   ########.fr       */
+/*   Updated: 2021/04/27 22:18:18 by jradioac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-
-char upper_case(char c)
-{
-	if (c >= 97 && c <= 122 )
-		c = c - 32;
-	return(c);
-}
 
 int main(int argc, char *argv[]) {
     
@@ -35,11 +27,10 @@ int main(int argc, char *argv[]) {
 			j = 0;
 			while(argv[i][j] != '\0')
 			{
-				upper_case(argv[i][j]);
-				std :: cout << upper_case(argv[i][j]);;
+				std :: cout << char(toupper(argv[i][j]));
 				j++;
 			}
-			std :: cout << ' ';
+			// std :: cout << ' ';
 			i++;
 		}
 		std :: cout << std :: endl;
