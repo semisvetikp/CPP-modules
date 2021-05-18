@@ -8,7 +8,7 @@ class Fixed
 {
 	private:
 		int					_raw;
-		static const int	_weight = 8;
+		static const int	_bits = 8;
 	public:
 		Fixed();
 		~Fixed();
