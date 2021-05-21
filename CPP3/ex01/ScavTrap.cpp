@@ -101,18 +101,18 @@ void ScavTrap::challengeNewcomer()
 	int random_variable = std::rand() % 5;
 	if (random_variable == 0)
 		std::cout << std::right << std::setfill(' ')
-			<< std::setw(80) << "\033[1;45mFR4G-TP " << _name << " attacks with the power of thought\033[0m\n" << std::endl;
+			<< std::setw(80) << "\033[1;45mSC4V-TP " << _name << " attacks with the power of thought\033[0m\n" << std::endl;
 	else if (random_variable == 1)
 		std::cout << std::right << std::setfill(' ')
-			<< std::setw(80) << "\033[1;45mFR4G-TP " << _name << " sends rays of good\033[0m\n" << std::endl;
+			<< std::setw(80) << "\033[1;45mSC4V-TP " << _name << " sends rays of good\033[0m\n" << std::endl;
 	else if (random_variable == 2)
 		std::cout << std::right << std::setfill(' ')
-			<< std::setw(80) << "\033[1;45mFR4G-TP " << _name << " starts to clean up\033[0m\n" << std::endl;	
+			<< std::setw(80) << "\033[1;45mSC4V-TP " << _name << " starts to clean up\033[0m\n" << std::endl;	
 	else if (random_variable == 3)
 		std::cout << std::right << std::setfill(' ')
-			<< std::setw(80) << "\033[1;45mFR4G-TP " << _name << " goes to work\033[0m\n" << std::endl;
+			<< std::setw(80) << "\033[1;45mSC4V-TP " << _name << " goes to work\033[0m\n" << std::endl;
 	else if (random_variable == 4)
 		std::cout << std::right << std::setfill(' ')
-			<< std::setw(80) << "\033[1;45mFR4G-TP " << _name << " goes on a trip around the world\033[0m\n" << std::endl;			
+			<< std::setw(80) << "\033[1;45mSC4V-TP " << _name << " goes on a trip around the world\033[0m\n" << std::endl;			
 }
 
