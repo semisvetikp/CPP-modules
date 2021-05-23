@@ -79,6 +79,14 @@ int main(int argc, char **argv)
 		{
 			std::string strFinal = strInput.substr(0, foundIndex) + s2 
 			+ strInput.substr(foundIndex + len1, (strInput.length() - foundIndex - len1));
+			foundIndex = strFinal.find(s1);
+			if (foundIndex != std::string::npos)
+				while (foundIndex != std::string::npos)
+				{
+					strFinal = strFinal.substr(0, foundIndex) + s2 
+					+ strFinal.substr(foundIndex + len1, (strFinal.length() - foundIndex - len1));
+					foundIndex = strFinal.find(s1);
+				}
 			outf << strFinal << "\n";
 		}
 	}

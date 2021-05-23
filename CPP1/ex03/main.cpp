@@ -2,11 +2,17 @@
 #include "Zombie.hpp"
 
 
-int main(void)
+void abc()
 {
 	ZombieHorde  Horde(5);
-	Horde.setZombieType("simple zombie");
-	Horde.createZombies();
 	Horde.announce();
+}
+
+int main(void)
+{
+	abc();
+
+	while(1)
+		continue;
 	return(0);
 }

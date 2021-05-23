@@ -35,20 +35,21 @@ int countEating(){
 	}
 }
 
-void ponyOnTheHeap(){
+
+void ponyOnTheStack(){
 	int count;
 
-	std::cout << "\n         -=It is a Pony on the heap=-\n";
+	std::cout << "\n         -=It is a Pony on the stack=-\n";
 	Pony ponyOnTheHeap("brown", "red", 4, 2000);
 	ponyOnTheHeap.helloIamPony();
 	count = countEating();
 	ponyOnTheHeap.eating(count);
 }
 
-void ponyOnTheStack(){
+void ponyOnTheHeap(){
 	int count;
 
-	std::cout << "\n         -=It is a Pony on the stack=-\n";
+	std::cout << "\n         -=It is a Pony on the heap=-\n";
 	Pony *ponyOnTheStack = new Pony("black", "white", 4, 3000);
 	if (!ponyOnTheStack){
 		std::cout << "Could not allocate memory\n";

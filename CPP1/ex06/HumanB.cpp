@@ -5,6 +5,7 @@ HumanB::HumanB (std::string name)
 	_name = name;
 }
 
+
 void HumanB::setWeapon(Weapon &weaponB)
 { 
 	_weaponB = &weaponB;

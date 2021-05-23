@@ -7,6 +7,8 @@ ZombieHorde::ZombieHorde(int N)
 	else
 		this->_cnt_zombie = 1;
 	this->_zombs = new Zombie[_cnt_zombie];
+	this->setZombieType("simple zombie");
+	createZombies();
 }
 
 void ZombieHorde::setZombieType(std::string type){
