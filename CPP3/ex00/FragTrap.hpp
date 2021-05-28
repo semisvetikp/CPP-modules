@@ -19,6 +19,7 @@ class FragTrap
 		unsigned int	_rahge;
 		unsigned int	_armor;
 	public:
+		FragTrap();
 		FragTrap(std::string name);
 		~FragTrap();
 		FragTrap(const FragTrap &fragtrap);

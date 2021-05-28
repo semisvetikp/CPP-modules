@@ -36,7 +36,8 @@ int	main(void)
 	NinjaTrap nintrap2("SASUKE");
 	nintrap1.ninjaShoebox(fragtrap);
 	nintrap1.ninjaShoebox(scavtrap);
-	nintrap1.ninjaShoebox( nintrap2);
+	nintrap1.ninjaShoebox(nintrap2);
+	nintrap1.ninjaShoebox(claptrap);
 
 	return (0);
 }

@@ -1,5 +1,7 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() {}
+
 FragTrap::FragTrap(std::string name)
 {
 	_name = name;

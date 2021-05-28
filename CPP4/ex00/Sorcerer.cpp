@@ -51,3 +51,8 @@ std::ostream& operator<<(std::ostream& out, const Sorcerer &sorcerer)
 	out <<", and I like ponies!" << std::endl;
 	return out;
 }
+
+void Sorcerer::polymorph(Victim const &src) const
+{
+	src.getPolymorphed();
+}

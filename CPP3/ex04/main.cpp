@@ -38,9 +38,9 @@ int	main(void)
 	nintrap1.ninjaShoebox(fragtrap);
 	nintrap1.ninjaShoebox(scavtrap);
 	nintrap1.ninjaShoebox( nintrap2);
+	nintrap1.ninjaShoebox(claptrap);
 
 	SuperTrap sup("KEKE");
-	// sup.print();
 	sup.rangedAttack("AAA");
 	sup.meleeAttack("BBB");
 

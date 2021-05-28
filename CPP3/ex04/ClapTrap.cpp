@@ -1,5 +1,7 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() {}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	_name = name;
@@ -50,51 +52,23 @@ ClapTrap& ClapTrap::operator= (const ClapTrap &ClapTrap)
 	return *this;
 }
 
-void ClapTrap::setHP(unsigned int hp){
-	_HP = hp;
-}
-void ClapTrap::setMaxHP(unsigned int mhp){
-	_maxHP = mhp;
-}
-void ClapTrap::setEnergy(unsigned int energy){
-	_energy = energy;
-}
-void ClapTrap::setMaxEnergy(unsigned int menergy){
-	_maxenergy = menergy;
-}
-void ClapTrap::setLevel(unsigned int lvl){
-	_level = lvl;
-}
-void ClapTrap::setName(std::string name){
-	_name = name;
-}
-void ClapTrap::setMelee(unsigned int melee){
-	_melee = melee;
-}
-void ClapTrap::setRange(unsigned int range){
-	_range = range;
-}
-void ClapTrap::setArmor(unsigned int armor){
-	_armor = armor;
-}
+unsigned int &ClapTrap::getHP()				{return (_HP);}
 
-unsigned int ClapTrap::getHP()				{return (_HP);}
+unsigned int &ClapTrap::getMaxHP()			{return (_maxHP);}
 
-unsigned int ClapTrap::getMaxHP()			{return (_maxHP);}
+unsigned int &ClapTrap::getEnergy()			{return (_energy);}
 
-unsigned int ClapTrap::getEnergy()			{return (_energy);}
+unsigned int &ClapTrap::getMaxEnergy()		{return (_maxenergy);}
 
-unsigned int ClapTrap::getMaxEnergy()		{return (_maxenergy);}
+unsigned int &ClapTrap::getLevel()			{return (_level);}
 
-unsigned int ClapTrap::getLevel()			{return (_level);}
+std::string &ClapTrap::getName()			{return (_name);}
 
-std::string ClapTrap::getName()				{return (_name);}
+unsigned int &ClapTrap::getMelee()			{return (_melee);}
 
-unsigned int ClapTrap::getMelee()			{return (_melee);}
+unsigned int &ClapTrap::getRange()			{return (_range);}
 
-unsigned int ClapTrap::getRange()			{return (_range);}
-
-unsigned int ClapTrap::getArmor()			{return (_armor);}
+unsigned int &ClapTrap::getArmor()			{return (_armor);}
 
 
 void ClapTrap::rangedAttack(std::string const &target)

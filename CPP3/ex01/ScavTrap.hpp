@@ -20,6 +20,7 @@ class ScavTrap
 		unsigned int	_rahge;
 		unsigned int	_armor;
 	public:
+		ScavTrap();
 		ScavTrap(std::string name);
 		~ScavTrap();
 		ScavTrap(const ScavTrap &scvtrap);

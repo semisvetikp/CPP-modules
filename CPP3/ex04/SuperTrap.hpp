@@ -13,13 +13,15 @@ class SuperTrap: public FragTrap, public NinjaTrap
 {
 
 	public:
+		SuperTrap();
 		SuperTrap(std::string name);
 		~SuperTrap();
+		SuperTrap(const SuperTrap &supertrap);		
+		SuperTrap& operator= (const SuperTrap &supertrap);	
 		void rangedAttack(std::string const &target);
 		void meleeAttack(std::string const &target);
 
-		// void print();
-
+		void print();
 };
 
 #endif
