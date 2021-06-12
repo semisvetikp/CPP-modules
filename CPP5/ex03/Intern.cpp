@@ -48,13 +48,14 @@ Form *getPardoned(std::string target)
 
 Form* Intern::makeForm(std::string name, std::string target)
 {
-	Form *(*forms[3])(std::string target) = {&getRobotomy, &getShrubbery, &getPardoned};
+    Form *(*forms[3])(std::string target) = {&getRobotomy, &getShrubbery, &getPardoned};
 
-	for (int i = 0; i < 3; ++i)
-		if (_names[i] == name)
-		{
-			std::cout << "Intern creates " << name << std::endl;
-			return(forms[i](target));
-		}
-	return(NULL);
+    for (int i = 0; i < 3; ++i)
+        if (_names[i] == name)
+        {
+            std::cout << "Intern creates " << name << std::endl;
+            return(forms[i](target));
+        }
+    std::cout << "Intern doesn't know " << name << " type of form" << std::endl;
+    return(NULL);
 }

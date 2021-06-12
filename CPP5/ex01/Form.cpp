@@ -2,12 +2,12 @@
 
 Form::~Form() {}
 
-Form::Form(std::string name, int grade): _name(name), _grade(grade)
+Form::Form(std::string name, int grade, int exec): _name(name), _grade(grade), _exec(exec)
 {
 	_signed = false;
 }
 
-Form::Form(const Form &src):  _name(src.getName()), _grade(src.getGrade())
+Form::Form(const Form &src):  _name(src.getName()), _grade(src.getGrade()), _exec(src.getExec())
 {
 	if (_grade > 150)
 		throw Form::GradeTooLowException(_name + " error in constructor");
@@ -26,6 +26,8 @@ Form& Form::operator=(const Form &src)
 }
 
 int Form::getGrade(void) const			{return(_grade);}
+
+int Form::getExec(void) const					{return(_exec);}
 
 const std::string Form::getName(void) const {return(_name);}
 

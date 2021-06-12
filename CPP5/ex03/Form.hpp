@@ -12,7 +12,7 @@ class Form
 		const std::string 	_name;
 		const int			_grade;
 		std::string			_target;
-		int					_exec;
+		const int			_exec;
 		bool				_signed;
 		Form();
 	public:

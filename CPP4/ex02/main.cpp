@@ -33,6 +33,7 @@ int main()
 {
 	ISpaceMarine* bob = new TacticalMarine;
 	ISpaceMarine* jim = new AssaultTerminator;
+
 	ISquad* vlc = new Squad;
 	vlc->push(bob);
 	vlc->push(jim);
@@ -43,6 +44,7 @@ int main()
 		cur->rangedAttack();
 		cur->meleeAttack();
 	}
+	
 	delete vlc;
 	// mytest();
 	return 0;

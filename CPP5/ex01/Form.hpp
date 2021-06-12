@@ -11,15 +11,17 @@ class Form
 	private:
 		const std::string 	_name;
 		const int			_grade;
+		const int			_exec;
 		bool				_signed;
 		Form();
 	public:
-		Form(std::string name, int grade);
+		Form(std::string name, int grade, int exec);
 		~Form();
 		Form(const Form &src);
 		Form& operator=(const Form &src);
 
 		int getGrade(void) const;
+		int getExec(void) const;
 		const std::string getName(void) const;
 		bool getSigned(void) const;
 

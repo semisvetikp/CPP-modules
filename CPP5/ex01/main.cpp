@@ -12,7 +12,7 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	Form mc("marriage contract", 120);
+	Form mc("marriage contract", 120, 50);
 	Bob.signForm(mc);
 	
 	return 0;

@@ -39,7 +39,6 @@ Squad::~Squad()
 	}
 }
 
-
 int Squad::getCount() const
 {
 	return (_count);
